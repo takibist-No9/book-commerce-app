@@ -3,6 +3,7 @@ import Stripe from "stripe";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export async function POST(request: Request, response: Response) {
   const { title, price, bookId, userId } = await request.json();
   console.log(title, price);
@@ -30,6 +31,7 @@ export async function POST(request: Request, response: Response) {
       cancel_url: "http://localhost:3000",
     });
     return NextResponse.json({ checkout_url: session.url });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
     return NextResponse.json(err.message);
   }
