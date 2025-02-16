@@ -1,7 +1,11 @@
 import { getDetailBook } from "@/app/lib/microcms/client";
 import Image from "next/image";
 
-const DetailBook = async ({ params }: { params: { id: string } }) => {
+type PageProps = {
+  params: { id: string };
+};
+
+const DetailBook = async ({ params }: PageProps) => {
   const { id } = params;
   const book = await getDetailBook(id); // SSRで呼ばれている(内部でfetchが呼ばれているため)
 
