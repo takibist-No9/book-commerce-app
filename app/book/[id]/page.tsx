@@ -2,15 +2,16 @@ import { getDetailBook } from "@/app/lib/microcms/client";
 import Image from "next/image";
 
 interface PageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export async function generateStaticParams() {
   return [];
 }
 
-const DetailBook = async (props: PageProps) => {
-  const book = await getDetailBook(props.params.id); // SSRで呼ばれている(内部でfetchが呼ばれているため)
+const DetailBook = async ({ params }: PageProps) => {
+  const { id } = await params;
+  const book = await getDetailBook(id); // SSRで呼ばれている(内部でfetchが呼ばれているため)
 
   return (
     <div className="container mx-auto p-4">
