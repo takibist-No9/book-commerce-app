@@ -9,9 +9,8 @@ export async function generateStaticParams() {
   return [];
 }
 
-const DetailBook = async ({ params }: PageProps) => {
-  const { id } = params;
-  const book = await getDetailBook(id); // SSRで呼ばれている(内部でfetchが呼ばれているため)
+const DetailBook = async (props: PageProps) => {
+  const book = await getDetailBook(props.params.id); // SSRで呼ばれている(内部でfetchが呼ばれているため)
 
   return (
     <div className="container mx-auto p-4">
