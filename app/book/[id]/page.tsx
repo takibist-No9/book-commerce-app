@@ -1,9 +1,13 @@
 import { getDetailBook } from "@/app/lib/microcms/client";
 import Image from "next/image";
 
-type PageProps = {
+interface PageProps {
   params: { id: string };
-};
+}
+
+export async function generateStaticParams() {
+  return [];
+}
 
 const DetailBook = async ({ params }: PageProps) => {
   const { id } = params;
