@@ -9,7 +9,7 @@ import Image from "next/image";
 //  return [];
 //}
 
-const DetailBook = async ({ params }: { params: { id: string } }) => {
+const DetailBook = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
   const book = await getDetailBook(id); // SSRで呼ばれている(内部でfetchが呼ばれているため)
 
